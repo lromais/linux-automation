@@ -11,11 +11,10 @@
         state: present
         update_cache: True
       with_items: 
-        - snap
         - openssh-server
         - htop
         - nmap
-				- net-tools
+        - net-tools
         - rsyslog
         - zsh
         - speedtest-cli
@@ -25,7 +24,6 @@
         - apt-transport-https
         - curl
         - gnupg2
-        - nmon
         - sysstat
         - iptraf-ng
         - jq
