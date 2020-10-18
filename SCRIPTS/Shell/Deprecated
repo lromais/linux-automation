@@ -1,0 +1,44 @@
+
+
+#GITLAB-RUNNER - CONFIGURATION
+APP_NAME="billing"
+ENVIRONMENT="development"
+SERVER_NAME="${APP_NAME}-1-${ENVIRONMENT}"
+GCP_ZONE="us-central1-a"
+GITLAB_REGISTRATION_TOKEN="-v2C75pifL21BhmkoDesp"
+GITLAB_URL="https://gitlab.com"
+# Change user that runs gitlab-runner
+sed -i -e 's/--user\" \"gitlab-runner\"/--user\" \"root\"/g' /etc/systemd/system/multi-user.target.wants/gitlab-runner.service
+# Register this Server to a Project
+gitlab-runner register --non-interactive -r "${GITLAB_REGISTRATION_TOKEN}" --url "${GITLAB_URL}" --tag-list "gcp,${GCP_ZONE},deploy,shell,${APP_NAME},${SERVER_NAME}" --locked --name "${SERVER_NAME}" --executor shell --shell bash
+
+
+#docker
+curl -sSL https://get.docker.com/ | sudo sh
+
+
+#kubectl 
+kubernetes - kubectl
+sudo apt-get update && sudo apt-get install -y apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y kubectl
+sudo apt-get install -y kubeadm
+sudo apt-get install -y kubelet
+
+#Install zsh
+echo "Installing ZSH"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+#pip3
+sudo apt install python3-pip
+
+
+    #function install_newrelic_infrastructure_agent {
+        # Install New Relic Infrastructure Agent, please run finish-setup.sh to add your license.key
+        #echo "license_key: YOUR_LICENSE_KEY" | sudo tee -a /etc/newrelic-infra.yml
+     #   curl https://download.newrelic.com/infrastructure_agent/gpg/newrelic-infra.gpg | sudo apt-key add -
+     #  printf "deb [arch=amd64] https://download.newrelic.com/infrastructure_agent/linux/apt stretch main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list
+     #  apt-get update
+     #  apt-get install newrelic-infra -y

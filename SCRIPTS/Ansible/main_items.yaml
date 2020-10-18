@@ -1,0 +1,36 @@
+- hosts: localhost
+  tasks:
+    - name: Updating all packages
+      apt:
+        name: '*'
+        state: latest
+      become: true
+    - name: Install Basic Packages
+      apt:
+        name: '{{ item }}' 
+        state: present
+        update_cache: True
+      with_items: 
+        - snap
+        - openssh-server
+        - htop
+        - nmap
+				- net-tools
+        - rsyslog
+        - zsh
+        - speedtest-cli
+        - rdesktop
+        - smartmontools
+        - dirmngr
+        - apt-transport-https
+        - curl
+        - gnupg2
+        - nmon
+        - sysstat
+        - iptraf-ng
+        - jq
+        - iotop
+        - wget
+        - git
+        - dos2unix  
+      become: true

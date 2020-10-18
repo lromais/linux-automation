@@ -1,0 +1,8 @@
+- hosts: localhost
+  gather_facts: True
+  remote_user: vagrant
+  tasks:
+    - name: Install CentOS Python3
+      apt:
+        name: [ "python3", "python3-pip" ]
+      become: true
