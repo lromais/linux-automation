@@ -18,6 +18,7 @@
         - rsyslog
         - zsh
         - speedtest-cli
+        - terminator
         - rdesktop
         - smartmontools
         - dirmngr
