@@ -1,3 +1,4 @@
+---
 - hosts: localhost
   tasks:
     - name: Updating all packages
@@ -7,10 +8,10 @@
       become: true
     - name: Install Basic Packages
       apt:
-        name: '{{ item }}' 
+        name: '{{ item }}'
         state: present
-        update_cache: True
-      with_items: 
+        update_cache: true
+      with_items:
         - openssh-server
         - htop
         - nmap
@@ -19,6 +20,7 @@
         - zsh
         - speedtest-cli
         - terminator
+        - code
         - rdesktop
         - smartmontools
         - dirmngr
@@ -31,5 +33,5 @@
         - iotop
         - wget
         - git
-        - dos2unix  
+        - dos2unix
       become: true
