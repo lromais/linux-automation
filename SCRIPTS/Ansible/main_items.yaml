@@ -22,7 +22,6 @@
         - zsh
         - speedtest-cli
         - terminator
-        - code
         - rdesktop
         - smartmontools
         - dirmngr
