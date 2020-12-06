@@ -35,4 +35,5 @@
         - wget
         - git
         - dos2unix
+        - dconf-editor
       become: true
